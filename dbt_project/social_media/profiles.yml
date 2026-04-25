@@ -1,0 +1,7 @@
+social_media:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "E:/Data engineering project/social-media-pipeline/data/social_media.duckdb"
+      threads: 4

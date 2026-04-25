@@ -1,0 +1,17 @@
+venv/
+__pycache__/
+*.pyc
+.env
+data/bronze/
+data/silver/
+data/gold/
+data/*.db
+data/*.duckdb
+airflow/logs/
+kafka/logs/
+target/
+dbt_packages/
+.DS_Store
+Thumbs.db
+.vscode/
+checkpoints/

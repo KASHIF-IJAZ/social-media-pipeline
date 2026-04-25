@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: "Bronze layer views registered in DuckDB"
+    database: social_media
+    schema: bronze
+    tables:
+      - name: users
+        description: "Raw user profiles"
+      - name: posts
+        description: "Raw social media posts"
+      - name: comments
+        description: "Raw post comments"
+      - name: likes
+        description: "Raw like events"

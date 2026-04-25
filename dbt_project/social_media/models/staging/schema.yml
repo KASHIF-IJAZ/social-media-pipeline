@@ -1,0 +1,90 @@
+version: 2
+
+models:
+  - name: stg_users
+    description: "Cleaned user profiles — silver layer"
+    columns:
+      - name: user_id
+        description: "Unique user identifier"
+        tests:
+          - unique
+          - not_null
+      - name: username
+        tests:
+          - not_null
+      - name: account_type
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["personal", "business", "creator", "news"]
+      - name: account_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["active", "suspended", "inactive"]
+      - name: follower_count
+        tests:
+          - not_null
+      - name: influencer_tier
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["mega", "macro", "micro", "nano", "regular"]
+
+  - name: stg_posts
+    description: "Cleaned social media posts — silver layer"
+    columns:
+      - name: post_id
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_users')
+                field: user_id
+      - name: post_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["text", "image", "video", "link"]
+      - name: engagement_tier
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["viral", "high", "medium", "low"]
+      - name: dq_flag
+        tests:
+          - not_null
+
+  - name: stg_comments
+    description: "Cleaned post comments — silver layer"
+    columns:
+      - name: comment_id
+        tests:
+          - unique
+          - not_null
+      - name: post_id
+        tests:
+          - not_null
+      - name: sentiment
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["positive", "neutral", "negative"]
+
+  - name: stg_likes
+    description: "Cleaned like events — silver layer"
+    columns:
+      - name: like_id
+        tests:
+          - unique
+          - not_null
+      - name: reaction_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["like", "love", "laugh", "wow", "sad"]

@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: mart_daily_engagement
+    description: "Daily platform engagement metrics — gold layer"
+    columns:
+      - name: date
+        tests:
+          - unique
+          - not_null
+      - name: total_posts
+        tests:
+          - not_null
+      - name: platform_engagement_rate
+        tests:
+          - not_null
+
+  - name: mart_hashtag_performance
+    description: "Hashtag trending metrics — gold layer"
+    columns:
+      - name: hashtag
+        tests:
+          - unique
+          - not_null
+
+  - name: mart_user_performance
+    description: "User engagement performance — gold layer"
+    columns:
+      - name: user_id
+        tests:
+          - unique
+          - not_null

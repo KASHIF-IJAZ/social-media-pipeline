@@ -1,0 +1,18 @@
+name: social_media
+version: '1.0.0'
+config-version: 2
+
+profile: social_media
+
+model-paths: ["models"]
+test-paths: ["tests"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  social_media:
+    staging:
+      +materialized: table
+      +schema: silver
+    marts:
+      +materialized: table
+      +schema: gold

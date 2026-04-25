@@ -1,0 +1,10 @@
+faker==24.0.0
+pandas==2.0.3
+pyarrow==14.0.1
+duckdb==0.10.0
+python-dotenv==1.0.0
+dbt-core==1.7.0
+dbt-duckdb==1.7.0
+confluent-kafka==2.8.0
+pyspark==3.5.1
+boto3==1.28.0
